@@ -16,32 +16,34 @@ const { isLoading, isError, data, error } = useQuery("post", () =>
 </script>
 
 <template>
-  <NavBar button="save" />
-  <main>
-    <div v-if="isLoading">Loading...</div>
-    <div v-else-if="isError">
-      An error has occurred while loading post: {{ error }}
-    </div>
+  <div>
+    <NavBar button="save" />
+    <main>
+      <div v-if="isLoading">Loading...</div>
+      <div v-else-if="isError">
+        An error has occurred while loading post: {{ error }}
+      </div>
 
-    <div v-else-if="data && data.owner">
-      <p>{{ data.owner.picture }}</p>
-      <p>
-        <span>
-          {{ data.owner.firstName }}
-        </span>
-        <span>{{ data.owner.lastName }}</span>
-      </p>
-      <p>{{ data.publishDate }}</p>
+      <div v-else-if="data && data.owner">
+        <p>{{ data.owner.picture }}</p>
+        <p>
+          <span>
+            {{ data.owner.firstName }}
+          </span>
+          <span>{{ data.owner.lastName }}</span>
+        </p>
+        <p>{{ data.publishDate }}</p>
 
-      <p>{{ data.image }}</p>
+        <p>{{ data.image }}</p>
 
-      {{ data.text }}
-      <ul>
-        <li v-for="tag in data.tags" :key="tag">{{ tag }}</li>
-      </ul>
+        {{ data.text }}
+        <ul>
+          <li v-for="tag in data.tags" :key="tag">{{ tag }}</li>
+        </ul>
+        <hr />
+      </div>
+
       <hr />
-    </div>
-
-    <hr />
-  </main>
+    </main>
+  </div>
 </template>

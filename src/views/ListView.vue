@@ -26,7 +26,7 @@ const { isLoading, isError, data, error } = useQuery("post", () =>
 <style scoped>
 .wrapper {
   max-width: 1200px;
-  padding-top: 100px;
+  padding-top: 50px;
   margin: auto;
   display: grid;
   grid-template-columns: 1fr;
@@ -41,6 +41,7 @@ const { isLoading, isError, data, error } = useQuery("post", () =>
 
 @media (min-width: 1024px) {
   .wrapper {
+    padding-top: 100px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }

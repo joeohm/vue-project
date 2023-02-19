@@ -37,8 +37,9 @@ html {
 }
 
 main {
+  min-height: 100vh;
   background-color: var(--color-bg-main);
-  padding: 50px 20px;
+  padding: 100px 20px;
   width: 100%;
   margin: auto;
   align-items: center;
@@ -46,13 +47,7 @@ main {
 
 @media (min-width: 768px) {
   main {
-    padding: 50px;
-  }
-}
-
-@media (min-width: 1024px) {
-  main {
-    padding: 75px 50px;
+    padding: 100px 50px;
   }
 }
 

@@ -12,10 +12,15 @@ const { id } = route.params;
     <div class="inner-wrapper">
       <RouterLink
         v-if="props.button === 'edit'"
-        :to="'/' + id + '/edit'"
+        :to="{ path: `/${id}/edit` }"
         class="edit-button"
       >
-        <p>edit</p>
+        <img
+          alt="Edit icon"
+          src="@/assets/edit-icon.svg"
+          width="57"
+          height="57"
+        />
       </RouterLink>
       <button v-if="props.button === 'save'">
         <p>save</p>
