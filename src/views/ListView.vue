@@ -17,14 +17,31 @@ const { isLoading, isError, data, error } = useQuery("post", () =>
   <main>
     <div v-if="isLoading">Loading...</div>
     <div v-else-if="isError">An error has occurred: {{ error }}</div>
-    <div v-else-if="data">
-      <ListItem
-        v-for="post in data.data"
-        :key="post.id"
-        :message="hej"
-        :testObject="testObject"
-        :post="post"
-      />
+    <div v-else-if="data" class="wrapper">
+      <ListItem v-for="post in data.data" :key="post.id" :post="post" />
     </div>
   </main>
 </template>
+
+<style scoped>
+.wrapper {
+  max-width: 1200px;
+  padding-top: 100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+</style>
