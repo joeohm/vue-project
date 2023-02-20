@@ -1,6 +1,11 @@
 <script setup>
 import EditPostForm from "../components/EditPostForm.vue";
 import NavBar from "../components/NavBar.vue";
+import { ref } from "vue";
+
+const name = ref("");
+const surname = ref("");
+const avatar = ref("");
 </script>
 
 <template>
@@ -12,9 +17,16 @@ import NavBar from "../components/NavBar.vue";
       <form class="flex-wrapper form">
         <div class="flex-wrapper post-owner-name-wrapper">
           <label for="name">Name*</label>
-          <input class="post-owner-input" type="text" id="name" name="name" />
+          <input
+            v-model="name"
+            class="post-owner-input"
+            type="text"
+            id="name"
+            name="name"
+          />
           <label for="surname">Surname*</label>
           <input
+            v-model="surname"
             class="post-owner-input"
             type="text"
             id="surname"
@@ -22,7 +34,13 @@ import NavBar from "../components/NavBar.vue";
           />
         </div>
         <label for="avatar">Avatar*</label>
-        <input class="post-owner-input" type="text" id="avatar" name="avatar" />
+        <input
+          v-model="avatar"
+          class="post-owner-input"
+          type="text"
+          id="avatar"
+          name="avatar"
+        />
       </form>
 
       <h3 class="header">Post</h3>
