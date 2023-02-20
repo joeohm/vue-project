@@ -2,6 +2,8 @@
 import NavBar from "../components/NavBar.vue";
 import { useRoute } from "vue-router";
 import { useQuery } from "vue-query";
+import UserWrapper from "../components/UserWrapper.vue";
+import EditPostForm from "../components/EditPostForm.vue";
 
 const route = useRoute();
 const { id } = route.params;
@@ -19,31 +21,22 @@ const { isLoading, isError, data, error } = useQuery("post", () =>
   <div>
     <NavBar button="save" />
     <main>
-      <div v-if="isLoading">Loading...</div>
-      <div v-else-if="isError">
-        An error has occurred while loading post: {{ error }}
+      <div class="page-container">
+        <h2 class="edit-header">Edit post</h2>
+        <div v-if="isLoading">Loading...</div>
+        <div v-else-if="isError">
+          An error has occurred while loading post: {{ error }}
+        </div>
+        <UserWrapper v-else-if="data && data.owner" :postData="data" />
+        <EditPostForm />
       </div>
-
-      <div v-else-if="data && data.owner">
-        <p>{{ data.owner.picture }}</p>
-        <p>
-          <span>
-            {{ data.owner.firstName }}
-          </span>
-          <span>{{ data.owner.lastName }}</span>
-        </p>
-        <p>{{ data.publishDate }}</p>
-
-        <p>{{ data.image }}</p>
-
-        {{ data.text }}
-        <ul>
-          <li v-for="tag in data.tags" :key="tag">{{ tag }}</li>
-        </ul>
-        <hr />
-      </div>
-
-      <hr />
     </main>
   </div>
 </template>
+
+<style scoped>
+.edit-header {
+  padding: 10px 0;
+  color: var(--color-theme-primary);
+}
+</style>
