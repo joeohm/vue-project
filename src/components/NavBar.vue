@@ -54,6 +54,7 @@ header {
   z-index: 10;
   height: 100px;
   padding-right: 20px;
+  box-shadow: 0px 3px 9px #80808014;
 }
 
 @media (min-width: 768px) {

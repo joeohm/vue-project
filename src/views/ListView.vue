@@ -4,7 +4,7 @@ import ListItem from "../components/ListItem.vue";
 import NavBar from "../components/NavBar.vue";
 
 const { isLoading, isError, data, error } = useQuery("post", () =>
-  fetch(`${import.meta.env.VITE_API_BASE_URL}/post?page=2&limit=20`, {
+  fetch(`${import.meta.env.VITE_API_BASE_URL}/post?page=1&limit=20`, {
     headers: {
       "APP-ID": import.meta.env.VITE_APP_ID,
     },

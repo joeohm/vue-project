@@ -45,77 +45,81 @@ const {
       <div v-else-if="commentIsError">
         An error has occurred while loading comments: {{ commentError }}
       </div>
-      <div v-else-if="postData && postData.owner" class="flex-wrapper">
-        <UserWrapper :postData="postData" />
-        <img alt="Post image" :src="postData.image" />
-
-        {{ postData.text }}
-        <ul class="tag-container">
-          <li v-for="tag in postData.tags" :key="tag" class="tag">{{ tag }}</li>
-        </ul>
-        <hr />
-      </div>
-
-      <div class="flex-wrapper">
-        <h3 class="header">Add a comment</h3>
-        <form class="flex-wrapper form">
-          <div class="flex-wrapper add-comment-name-wrapper">
-            <label for="name">Name*</label>
-            <input
-              class="add-comment-input"
-              type="text"
-              id="name"
-              name="name"
-            />
-            <label for="surname">Surname*</label>
-            <input
-              class="add-comment-input"
-              type="text"
-              id="surname"
-              name="surname"
-            />
-          </div>
-          <label for="message">Message*</label>
-          <textarea
-            class="add-comment-input"
-            type="text"
-            id="message"
-            name="message"
-          />
-          <button class="add-comment-submit" type="submit">POST</button>
-        </form>
-      </div>
-      <hr />
-
-      <div v-if="commentData && commentData.total > 0" class="flex-wrapper">
-        <h3 class="header">
-          {{ commentData.total }}
-          {{ commentData.total > 1 ? "comments" : "comment" }}
-        </h3>
-        <ul class="flex-wrapper">
-          <li
-            class="flex-wrapper comment-wrapper"
-            v-for="comment in commentData.data"
-            :key="comment.id"
-          >
-            <div class="comment-owner-wrapper">
-              <img
-                class="comment-owner-image"
-                :src="comment.owner.picture"
-                alt="User image"
-              />
-              <h4>
-                <span> {{ comment.owner.firstName }} {{ "" }} </span>
-                <span>{{ comment.owner.lastName }}</span>
-              </h4>
-            </div>
-            <p>{{ comment.message }}</p>
-            <i>{{ formatDate(comment.publishDate) }}</i>
-          </li>
-        </ul>
-      </div>
       <div v-else>
-        <h3 class="header">No comments</h3>
+        <div class="flex-wrapper">
+          <UserWrapper :postData="postData" />
+          <img alt="Post image" :src="postData.image" />
+
+          {{ postData.text }}
+          <ul class="tag-container">
+            <li v-for="tag in postData.tags" :key="tag" class="tag">
+              {{ tag }}
+            </li>
+          </ul>
+          <hr />
+        </div>
+
+        <div v-if="!postIsLoading && !commentIsLoading" class="flex-wrapper">
+          <h3 class="header">Add a comment</h3>
+          <form class="flex-wrapper form">
+            <div class="flex-wrapper add-comment-name-wrapper">
+              <label for="name">Name*</label>
+              <input
+                class="add-comment-input"
+                type="text"
+                id="name"
+                name="name"
+              />
+              <label for="surname">Surname*</label>
+              <input
+                class="add-comment-input"
+                type="text"
+                id="surname"
+                name="surname"
+              />
+            </div>
+            <label for="message">Message*</label>
+            <textarea
+              class="add-comment-input"
+              type="text"
+              id="message"
+              name="message"
+            />
+            <button class="add-comment-submit" type="submit">POST</button>
+          </form>
+        </div>
+        <hr />
+
+        <div v-if="commentData && commentData.total > 0" class="flex-wrapper">
+          <h3 class="header">
+            {{ commentData.total }}
+            {{ commentData.total > 1 ? "comments" : "comment" }}
+          </h3>
+          <ul class="flex-wrapper comments-wrapper">
+            <li
+              class="flex-wrapper comment-wrapper"
+              v-for="comment in commentData.data"
+              :key="comment.id"
+            >
+              <div class="comment-owner-wrapper">
+                <img
+                  class="comment-owner-image"
+                  :src="comment.owner.picture"
+                  alt="User image"
+                />
+                <h4>
+                  <span> {{ comment.owner.firstName }} {{ "" }} </span>
+                  <span>{{ comment.owner.lastName }}</span>
+                </h4>
+              </div>
+              <p>{{ comment.message }}</p>
+              <i>{{ formatDate(comment.publishDate) }}</i>
+            </li>
+          </ul>
+        </div>
+        <div v-else>
+          <h3 class="header">No comments</h3>
+        </div>
       </div>
     </div>
   </main>
@@ -166,6 +170,9 @@ hr {
   order: 2;
 }
 
+.comments-wrapper {
+  gap: 40px;
+}
 .comment-wrapper {
   gap: 15px;
 }
