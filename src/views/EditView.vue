@@ -28,7 +28,7 @@ const { isLoading, isError, data, error } = useQuery("post", () =>
           An error has occurred while loading post: {{ error }}
         </div>
         <UserWrapper v-else-if="data && data.owner" :postData="data" />
-        <EditPostForm />
+        <EditPostForm :data="data" />
       </div>
     </main>
   </div>
