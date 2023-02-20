@@ -37,7 +37,7 @@ const {
 <template>
   <NavBar button="edit" />
   <main>
-    <div class="wrapper container">
+    <div class="flex-wrapper page-container">
       <div v-if="postIsLoading || commentIsLoading">Loading...</div>
       <div v-else-if="postIsError">
         An error has occurred while loading post: {{ postError }}
@@ -45,7 +45,7 @@ const {
       <div v-else-if="commentIsError">
         An error has occurred while loading comments: {{ commentError }}
       </div>
-      <div v-else-if="postData && postData.owner" class="wrapper">
+      <div v-else-if="postData && postData.owner" class="flex-wrapper">
         <UserWrapper :postData="postData" />
         <img alt="Post image" :src="postData.image" />
 
@@ -56,10 +56,10 @@ const {
         <hr />
       </div>
 
-      <div class="wrapper">
+      <div class="flex-wrapper">
         <h3 class="add-comment-header">Add a comment</h3>
         <form class="add-comment-form">
-          <div class="wrapper add-comment-name-wrapper">
+          <div class="flex-wrapper add-comment-name-wrapper">
             <label for="name">Name*</label>
             <input
               class="add-comment-input"
@@ -87,14 +87,14 @@ const {
       </div>
       <hr />
 
-      <div v-if="commentData && commentData.total > 0" class="wrapper">
+      <div v-if="commentData && commentData.total > 0" class="flex-wrapper">
         <h3 class="comments-header">
           {{ commentData.total }}
           {{ commentData.total > 1 ? "comments" : "comment" }}
         </h3>
-        <ul class="wrapper">
+        <ul class="flex-wrapper">
           <li
-            class="wrapper comment-wrapper"
+            class="flex-wrapper comment-wrapper"
             v-for="comment in commentData.data"
             :key="comment.id"
           >
