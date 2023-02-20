@@ -22,9 +22,14 @@ const { id } = route.params;
           height="57"
         />
       </RouterLink>
-      <button v-if="props.button === 'save'">
-        <p>save</p>
-      </button>
+      <RouterLink to="/" v-if="props.button === 'save'">
+        <img
+          alt="Save icon"
+          src="@/assets/save-icon.svg"
+          width="57"
+          height="57"
+        />
+      </RouterLink>
       <RouterLink v-if="props.button === 'create'" to="/create">
         <img
           alt="Plus icon"

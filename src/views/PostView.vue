@@ -2,7 +2,8 @@
 import { useRoute } from "vue-router";
 import { useQuery } from "vue-query";
 import NavBar from "../components/NavBar.vue";
-import { formatDate } from "../utils";
+import UserWrapper from "../components/UserWrapper.vue";
+import { formatDate } from "../utils.js";
 
 const route = useRoute();
 const { id } = route.params;
@@ -36,7 +37,7 @@ const {
 <template>
   <NavBar button="edit" />
   <main>
-    <div class="wrapper">
+    <div class="wrapper container">
       <div v-if="postIsLoading || commentIsLoading">Loading...</div>
       <div v-else-if="postIsError">
         An error has occurred while loading post: {{ postError }}
@@ -44,23 +45,9 @@ const {
       <div v-else-if="commentIsError">
         An error has occurred while loading comments: {{ commentError }}
       </div>
-      <div v-else-if="postData && postData.owner" class="post-wrapper">
-        <div class="user-wrapper">
-          <img
-            alt="User image"
-            :src="postData.owner.picture"
-            class="user-image"
-          />
-
-          <div class="title-wrapper">
-            <h2>
-              <span> {{ postData.owner.firstName }} {{ "" }} </span>
-              <span>{{ postData.owner.lastName }}</span>
-            </h2>
-            <i>{{ formatDate(postData.publishDate) }}</i>
-          </div>
-        </div>
-        <img alt="Post image" :src="postData.image" class="post-image" />
+      <div v-else-if="postData && postData.owner" class="wrapper">
+        <UserWrapper :postData="postData" />
+        <img alt="Post image" :src="postData.image" />
 
         {{ postData.text }}
         <ul class="tag-container">
@@ -69,80 +56,147 @@ const {
         <hr />
       </div>
 
-      <div class="add-comment"></div>
+      <div class="wrapper">
+        <h3 class="add-comment-header">Add a comment</h3>
+        <form class="add-comment-form">
+          <div class="wrapper add-comment-name-wrapper">
+            <label for="name">Name*</label>
+            <input
+              class="add-comment-input"
+              type="text"
+              id="name"
+              name="name"
+            />
+            <label for="surname">Surname*</label>
+            <input
+              class="add-comment-input"
+              type="text"
+              id="surname"
+              name="surname"
+            />
+          </div>
+          <label for="name">Message*</label>
+          <textarea
+            class="add-comment-input"
+            type="text"
+            id="message"
+            name="message"
+          />
+          <button class="add-comment-submit" type="submit">POST</button>
+        </form>
+      </div>
       <hr />
 
-      <div v-if="commentData" class="comments">
-        <div v-if="commentData.total > 0">
-          <h4>{{ commentData.total }} comments</h4>
-          <ul>
-            <li v-for="comment in commentData.data" :key="comment.id">
-              <!-- <p>{{ comment.owner.picture }}</p> -->
-              <p>
-                <span>
-                  {{ comment.owner.firstName }}
-                </span>
+      <div v-if="commentData && commentData.total > 0" class="wrapper">
+        <h3 class="comments-header">
+          {{ commentData.total }}
+          {{ commentData.total > 1 ? "comments" : "comment" }}
+        </h3>
+        <ul class="wrapper">
+          <li
+            class="wrapper comment-wrapper"
+            v-for="comment in commentData.data"
+            :key="comment.id"
+          >
+            <div class="comment-owner-wrapper">
+              <img
+                class="comment-owner-image"
+                :src="comment.owner.picture"
+                alt="User image"
+              />
+              <h4>
+                <span> {{ comment.owner.firstName }} {{ "" }} </span>
                 <span>{{ comment.owner.lastName }}</span>
-              </p>
-              <p>{{ comment.message }}</p>
-              <p>{{ comment.publishDate }}</p>
-            </li>
-          </ul>
-        </div>
-        <div v-else>
-          <p>No comments</p>
-        </div>
+              </h4>
+            </div>
+            <p>{{ comment.message }}</p>
+            <i>{{ formatDate(comment.publishDate) }}</i>
+          </li>
+        </ul>
+      </div>
+      <div v-else>
+        <h3 class="comments-header">No comments</h3>
       </div>
     </div>
   </main>
 </template>
 
 <style scoped>
-.wrapper {
-  width: 100%;
-  max-width: 750px;
-  padding-top: 50px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  color: var(--color-theme-secondary);
+hr {
+  margin-top: 20px;
 }
 
-@media (min-width: 1024px) {
-  .wrapper {
-    padding-top: 70px;
+.add-comment-header {
+  color: var(--color-theme-primary);
+  margin-bottom: 10px;
+}
+
+.add-comment-form {
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (min-width: 768px) {
+  .add-comment-name-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-.post-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.add-comment-input {
+  font-family: inherit;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  height: 40px;
+  margin-bottom: 10px;
 }
 
-.user-wrapper {
-  display: flex;
-  gap: 20px;
+@media (min-width: 768px) {
+  .add-comment-input {
+    order: 1;
+  }
 }
 
-.title-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  justify-content: center;
+#message {
+  resize: none;
+  height: 150px;
 }
-.title-wrapper h2 {
+
+.add-comment-submit {
+  font-size: 1.2rem;
+  font-family: inherit;
+  font-weight: 700;
+  margin: 15px auto 0;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: var(--color-theme-primary);
+  order: 2;
+}
+
+.comments-header {
+  color: var(--color-theme-primary);
+  margin: 10px 0;
+}
+
+.comment-wrapper {
+  gap: 15px;
+}
+
+.comment-owner-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
   color: var(--color-theme-primary);
 }
-
-.post-image {
-  /* max-height: 750px; */
-  /* object-fit: cover; */
-}
-
-.user-image {
+.comment-owner-image {
+  height: 30px;
+  width: 30px;
   border-radius: 50%;
-  border: solid 5px var(--color-theme-primary);
 }
 </style>
