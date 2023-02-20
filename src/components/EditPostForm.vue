@@ -2,7 +2,7 @@
 
 <template>
   <div class="flex-wrapper">
-    <form class="edit-post-form">
+    <form class="flex-wrapper form">
       <label for="image">Image*</label>
       <input
         class="edit-post-input"
@@ -26,14 +26,6 @@
 </template>
 
 <style scoped>
-.edit-post-form {
-  color: var(--color-theme-secondary);
-  font-weight: 700;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
 .edit-post-input {
   font-family: inherit;
   padding: 10px;

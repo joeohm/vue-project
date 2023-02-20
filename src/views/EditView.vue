@@ -22,7 +22,7 @@ const { isLoading, isError, data, error } = useQuery("post", () =>
     <NavBar button="save" />
     <main>
       <div class="page-container">
-        <h2 class="edit-header">Edit post</h2>
+        <h2 class="header page-header">Edit post</h2>
         <div v-if="isLoading">Loading...</div>
         <div v-else-if="isError">
           An error has occurred while loading post: {{ error }}
@@ -33,10 +33,3 @@ const { isLoading, isError, data, error } = useQuery("post", () =>
     </main>
   </div>
 </template>
-
-<style scoped>
-.edit-header {
-  padding: 10px 0;
-  color: var(--color-theme-primary);
-}
-</style>

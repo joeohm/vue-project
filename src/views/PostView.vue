@@ -57,8 +57,8 @@ const {
       </div>
 
       <div class="flex-wrapper">
-        <h3 class="add-comment-header">Add a comment</h3>
-        <form class="add-comment-form">
+        <h3 class="header">Add a comment</h3>
+        <form class="flex-wrapper form">
           <div class="flex-wrapper add-comment-name-wrapper">
             <label for="name">Name*</label>
             <input
@@ -75,7 +75,7 @@ const {
               name="surname"
             />
           </div>
-          <label for="name">Message*</label>
+          <label for="message">Message*</label>
           <textarea
             class="add-comment-input"
             type="text"
@@ -88,7 +88,7 @@ const {
       <hr />
 
       <div v-if="commentData && commentData.total > 0" class="flex-wrapper">
-        <h3 class="comments-header">
+        <h3 class="header">
           {{ commentData.total }}
           {{ commentData.total > 1 ? "comments" : "comment" }}
         </h3>
@@ -115,7 +115,7 @@ const {
         </ul>
       </div>
       <div v-else>
-        <h3 class="comments-header">No comments</h3>
+        <h3 class="header">No comments</h3>
       </div>
     </div>
   </main>
@@ -124,18 +124,6 @@ const {
 <style scoped>
 hr {
   margin-top: 20px;
-}
-
-.add-comment-header {
-  color: var(--color-theme-primary);
-  margin-bottom: 10px;
-}
-
-.add-comment-form {
-  font-weight: 700;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
 @media (min-width: 768px) {
@@ -176,11 +164,6 @@ hr {
   color: white;
   background-color: var(--color-theme-primary);
   order: 2;
-}
-
-.comments-header {
-  color: var(--color-theme-primary);
-  margin: 10px 0;
 }
 
 .comment-wrapper {

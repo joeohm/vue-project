@@ -77,10 +77,26 @@ main {
 .page-container {
   width: 100%;
   max-width: 750px;
-  padding: 50px 0;
+  padding: 30px 0;
   margin: auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
   color: var(--color-theme-secondary);
+}
+
+@media (min-width: 1024px) {
+  .page-container {
+    padding: 50px 0;
+  }
+}
+
+.header {
+  color: var(--color-theme-primary);
+  padding: 10px 0;
+}
+
+.form {
+  font-weight: 700;
+  margin-bottom: 20px;
 }
