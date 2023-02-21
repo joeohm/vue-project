@@ -46,7 +46,7 @@ const {
       <div v-else-if="commentIsError">
         An error has occurred while loading comments: {{ commentError }}
       </div>
-      <div v-else>
+      <div v-else-if="postData">
         <div class="flex-wrapper">
           <UserWrapper :postData="postData" />
           <img alt="Post image" :src="postData.image" />
