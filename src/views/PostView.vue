@@ -4,6 +4,7 @@ import { useQuery } from "vue-query";
 import NavBar from "../components/NavBar.vue";
 import UserWrapper from "../components/UserWrapper.vue";
 import { formatDate } from "../utils.js";
+import Spinner from "../components/TheSpinner.vue";
 
 const route = useRoute();
 const { id } = route.params;
@@ -38,7 +39,7 @@ const {
   <NavBar button="edit" />
   <main>
     <div class="flex-wrapper page-container">
-      <div v-if="postIsLoading || commentIsLoading">Loading...</div>
+      <Spinner v-if="postIsLoading || commentIsLoading" />
       <div v-else-if="postIsError">
         An error has occurred while loading post: {{ postError }}
       </div>

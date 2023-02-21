@@ -4,6 +4,7 @@ import { useRoute } from "vue-router";
 import { useQuery } from "vue-query";
 import UserWrapper from "../components/UserWrapper.vue";
 import EditPostForm from "../components/EditPostForm.vue";
+import Spinner from "../components/TheSpinner.vue";
 
 const route = useRoute();
 const { id } = route.params;
@@ -20,7 +21,7 @@ const { isLoading, isError, data, error } = useQuery("post", () =>
 <template>
   <div>
     <NavBar button="save" />
-    <div v-if="isLoading">Loading...</div>
+    <Spinner v-if="isLoading" />
     <div v-else-if="isError">
       An error has occurred while loading post: {{ error }}
     </div>
