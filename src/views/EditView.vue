@@ -21,22 +21,18 @@ const { isLoading, isError, data, error } = useQuery("post", () =>
 <template>
   <div>
     <NavBar button="save" />
-    <Spinner v-if="isLoading" />
-    <div v-else-if="isError">
-      An error has occurred while loading post: {{ error }}
-    </div>
-    <div v-else>
-      <main>
+    <main>
+      <Spinner v-if="isLoading" />
+      <div v-else-if="isError">
+        An error has occurred while loading post: {{ error }}
+      </div>
+      <div v-else-if="data">
         <div class="page-container">
           <h2 class="header page-header">Edit post</h2>
-          <div v-if="isLoading">Loading...</div>
-          <div v-else-if="isError">
-            An error has occurred while loading post: {{ error }}
-          </div>
-          <UserWrapper v-else-if="data && data.owner" :postData="data" />
+          <UserWrapper v-if="data && data.owner" :postData="data" />
           <EditPostForm :data="data" />
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   </div>
 </template>

@@ -5,6 +5,7 @@ import NavBar from "../components/NavBar.vue";
 import UserWrapper from "../components/UserWrapper.vue";
 import { formatDate } from "../utils.js";
 import Spinner from "../components/TheSpinner.vue";
+import CommentForm from "../components/CommentForm.vue";
 
 const route = useRoute();
 const { id } = route.params;
@@ -59,38 +60,8 @@ const {
           </ul>
           <hr />
         </div>
-
-        <div v-if="!postIsLoading && !commentIsLoading" class="flex-wrapper">
-          <h3 class="header">Add a comment</h3>
-          <form class="flex-wrapper form">
-            <div class="flex-wrapper add-comment-name-wrapper">
-              <label for="name">Name*</label>
-              <input
-                class="add-comment-input"
-                type="text"
-                id="name"
-                name="name"
-              />
-              <label for="surname">Surname*</label>
-              <input
-                class="add-comment-input"
-                type="text"
-                id="surname"
-                name="surname"
-              />
-            </div>
-            <label for="message">Message*</label>
-            <textarea
-              class="add-comment-input"
-              type="text"
-              id="message"
-              name="message"
-            />
-            <button class="add-comment-submit" type="submit">POST</button>
-          </form>
-        </div>
+        <CommentForm />
         <hr />
-
         <div v-if="commentData && commentData.total > 0" class="flex-wrapper">
           <h3 class="header">
             {{ commentData.total }}
@@ -129,46 +100,6 @@ const {
 <style scoped>
 hr {
   margin-top: 20px;
-}
-
-@media (min-width: 768px) {
-  .add-comment-name-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.add-comment-input {
-  font-family: inherit;
-  padding: 10px;
-  border: none;
-  border-radius: 3px;
-  height: 40px;
-  margin-bottom: 10px;
-}
-
-@media (min-width: 768px) {
-  .add-comment-input {
-    order: 1;
-  }
-}
-
-#message {
-  resize: none;
-  height: 150px;
-}
-
-.add-comment-submit {
-  font-size: 1.2rem;
-  font-family: inherit;
-  font-weight: 700;
-  margin: 15px auto 0;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  background-color: var(--color-theme-primary);
-  order: 2;
 }
 
 .comments-wrapper {

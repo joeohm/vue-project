@@ -4,8 +4,8 @@ const props = defineProps({
   data: Object,
 });
 
-const image = ref(props.data ? props.data.image : "");
-const text = ref(props.data ? props.data.text : "");
+const image = ref(props.data?.image || "");
+const text = ref(props.data?.text || "");
 const tags = ref(props.data ? [...props.data.tags].join(", ") : "");
 </script>
 
@@ -28,6 +28,7 @@ const tags = ref(props.data ? [...props.data.tags].join(", ") : "");
         type="text"
         id="text"
         name="text"
+        placeholder="Write a nice message here!"
       />
       <label for="tags">Tags</label>
       <input

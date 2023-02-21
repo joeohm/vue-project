@@ -23,6 +23,7 @@ const avatar = ref("");
             type="text"
             id="name"
             name="name"
+            placeholder="First name"
           />
           <label for="surname">Surname*</label>
           <input
@@ -31,6 +32,7 @@ const avatar = ref("");
             type="text"
             id="surname"
             name="surname"
+            placeholder="Surname"
           />
         </div>
         <label for="avatar">Avatar*</label>
@@ -40,6 +42,7 @@ const avatar = ref("");
           type="text"
           id="avatar"
           name="avatar"
+          placeholder="https://www.example.com/avatar-url/"
         />
       </form>
 
