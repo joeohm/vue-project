@@ -40,6 +40,7 @@ const { id } = route.params;
       </button>
       <RouterLink v-if="props.button === 'create'" to="/create">
         <img
+          data-cy-button="create"
           alt="Plus icon"
           src="@/assets/plus-icon.svg"
           width="57"

@@ -8,7 +8,12 @@ const props = defineProps({
 
 <template>
   <RouterLink :to="'/post/' + props.post.id" class="post">
-    <img alt="Post image" :src="props.post.image" class="post-image" />
+    <img
+      data-cy-post-image
+      alt="Post image"
+      :src="props.post.image"
+      class="post-image"
+    />
     <div class="post-name-container">
       <img
         alt="User icon"
@@ -17,18 +22,18 @@ const props = defineProps({
         width="20"
         height="20"
       />
-      <h2 class="post-name">
+      <h2 data-cy-post-name class="post-name">
         <span> {{ props.post.owner.firstName }} {{ "" }} </span>
         <span>{{ props.post.owner.lastName }}</span>
       </h2>
     </div>
-    <p>
+    <p data-cy-post-text>
       {{ props.post.text }}
     </p>
-    <ul class="tag-container">
+    <ul class="tag-container" data-cy-post-tags>
       <li v-for="tag in props.post.tags" :key="tag" class="tag">{{ tag }}</li>
     </ul>
-    <i>{{ formatDate(props.post.publishDate) }}</i>
+    <i data-cy-post-date>{{ formatDate(props.post.publishDate) }}</i>
   </RouterLink>
 </template>
 

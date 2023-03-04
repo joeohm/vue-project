@@ -20,11 +20,16 @@ const { isLoading, isError, data, error } = useQuery("post", () =>
 
 <template :key="page">
   <NavBar button="create" />
-  <main>
+  <main data-cy="list-view">
     <Spinner v-if="isLoading" />
     <div v-else-if="isError">An error has occurred: {{ error }}</div>
     <div v-else-if="data" class="grid-wrapper">
-      <ListItem v-for="post in data.data" :key="post.id" :post="post" />
+      <ListItem
+        :data-cy-post="post.id"
+        v-for="post in data.data"
+        :key="post.id"
+        :post="post"
+      />
     </div>
   </main>
   <ListViewNavigation v-if="data" :page="page" :data="data" />
