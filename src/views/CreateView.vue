@@ -11,13 +11,14 @@ const avatar = ref("");
 <template>
   <NavBar button="save" />
   <main>
-    <div class="page-container">
-      <h2 class="header">Create new post</h2>
-      <h3 class="header">Post owner</h3>
+    <div data-cy-wrapper="create" class="page-container">
+      <h2 data-cy-header class="header">Create new post</h2>
+      <h3 data-cy-subheader="owner" class="header">Post owner</h3>
       <form class="flex-wrapper form">
         <div class="flex-wrapper post-owner-name-wrapper">
-          <label for="name">Name*</label>
+          <label data-cy-label="name" for="name">Name*</label>
           <input
+            data-cy-input="name"
             v-model="name"
             class="post-owner-input"
             type="text"
@@ -25,8 +26,9 @@ const avatar = ref("");
             name="name"
             placeholder="First name"
           />
-          <label for="surname">Surname*</label>
+          <label data-cy-label="surname" for="surname">Surname*</label>
           <input
+            data-cy-input="surname"
             v-model="surname"
             class="post-owner-input"
             type="text"
@@ -35,8 +37,9 @@ const avatar = ref("");
             placeholder="Surname"
           />
         </div>
-        <label for="avatar">Avatar*</label>
+        <label data-cy-label="avatar" for="avatar">Avatar*</label>
         <input
+          data-cy-input="avatar"
           v-model="avatar"
           class="post-owner-input"
           type="text"
@@ -46,7 +49,7 @@ const avatar = ref("");
         />
       </form>
 
-      <h3 class="header">Post</h3>
+      <h3 data-cy-subheader="post" class="header">Post</h3>
       <EditPostForm />
     </div>
   </main>

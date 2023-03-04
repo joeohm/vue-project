@@ -24,6 +24,7 @@ const { id } = route.params;
         />
       </RouterLink>
       <button
+        data-cy-button="save"
         v-if="props.button === 'save'"
         @click="
           ($event) => {

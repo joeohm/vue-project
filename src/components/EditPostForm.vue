@@ -12,8 +12,9 @@ const tags = ref(props.data ? [...props.data.tags].join(", ") : "");
 <template>
   <div class="flex-wrapper">
     <form class="flex-wrapper form">
-      <label for="image">Image*</label>
+      <label data-cy-label="image" for="image">Image*</label>
       <input
+        data-cy-input="image"
         v-model="image"
         class="edit-post-input"
         type="text"
@@ -21,8 +22,9 @@ const tags = ref(props.data ? [...props.data.tags].join(", ") : "");
         name="image"
         placeholder="https://www.example.com/image/1"
       />
-      <label for="text">Text*</label>
+      <label data-cy-label="text" for="text">Text*</label>
       <textarea
+        data-cy-input="text"
         class="edit-post-input"
         v-model="text"
         type="text"
@@ -30,8 +32,9 @@ const tags = ref(props.data ? [...props.data.tags].join(", ") : "");
         name="text"
         placeholder="Write a nice message here!"
       />
-      <label for="tags">Tags</label>
+      <label data-cy-label="tags" for="tags">Tags</label>
       <input
+        data-cy-input="tags"
         v-model="tags"
         class="edit-post-input"
         type="text"
