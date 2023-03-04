@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "id": "60d222ec67d0d8992e611753",
+      "message": "Cute pic",
+      "owner": {
+        "id": "60d0fe4f5311236168a10a22",
+        "title": "mr",
+        "firstName": "Nikolaj",
+        "lastName": "Larsen",
+        "picture": "https://randomuser.me/api/portraits/med/men/22.jpg"
+      },
+      "post": "60d21b1767d0d8992e610bfb",
+      "publishDate": "2019-11-23T19:50:27.416Z"
+    }
+  ],
+  "total": 1,
+  "page": 0,
+  "limit": 20
+}

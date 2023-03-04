@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "id": "60d2231167d0d8992e6117c0",
+      "message": "😃 Wonderful image",
+      "owner": {
+        "id": "60d0fe4f5311236168a109d6",
+        "title": "mrs",
+        "firstName": "Elisa",
+        "lastName": "Lorenzo",
+        "picture": "https://randomuser.me/api/portraits/med/women/89.jpg"
+      },
+      "post": "60d21bbc67d0d8992e610dde",
+      "publishDate": "2020-05-10T17:37:19.561Z"
+    },
+    {
+      "id": "60d2250367d0d8992e611a18",
+      "message": "Wonderful post",
+      "owner": {
+        "id": "60d0fe4f5311236168a10a26",
+        "title": "mr",
+        "firstName": "Elliot",
+        "lastName": "Walker",
+        "picture": "https://randomuser.me/api/portraits/med/men/53.jpg"
+      },
+      "post": "60d21bbc67d0d8992e610dde",
+      "publishDate": "2020-04-16T20:57:19.364Z"
+    },
+    {
+      "id": "60d2250967d0d8992e611a2c",
+      "message": "Pretty picture",
+      "owner": {
+        "id": "60d0fe4f5311236168a10a0f",
+        "title": "mr",
+        "firstName": "Kaya",
+        "lastName": "Basoglu",
+        "picture": "https://randomuser.me/api/portraits/med/men/59.jpg"
+      },
+      "post": "60d21bbc67d0d8992e610dde",
+      "publishDate": "2020-02-20T04:30:09.545Z"
+    }
+  ],
+  "total": 3,
+  "page": 0,
+  "limit": 20
+}

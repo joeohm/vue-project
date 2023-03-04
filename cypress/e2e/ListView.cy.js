@@ -2,7 +2,7 @@ describe("list view", () => {
   beforeEach(() => {
     cy.intercept("https://dummyapi.io/data/v1/post?page=1&limit=20", {
       fixture: "list.json",
-    });
+    }).as("Posts");
 
     cy.visit("http://localhost:5173/");
   });

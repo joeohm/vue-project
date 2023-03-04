@@ -1,22 +1,30 @@
 <script setup></script>
 
 <template>
-  <div class="flex-wrapper">
-    <h3 class="header">Add a comment</h3>
+  <div data-cy-wrapper="add-comment" class="flex-wrapper">
+    <h3 data-cy-header class="header">Add a comment</h3>
     <form class="flex-wrapper form">
       <div class="flex-wrapper add-comment-name-wrapper">
-        <label for="name">Name*</label>
-        <input class="add-comment-input" type="text" id="name" name="name" />
-        <label for="surname">Surname*</label>
+        <label data-cy-label="name" for="name">Name*</label>
         <input
+          data-cy-input="name"
+          class="add-comment-input"
+          type="text"
+          id="name"
+          name="name"
+        />
+        <label data-cy-label="surname" for="surname">Surname*</label>
+        <input
+          data-cy-input="surname"
           class="add-comment-input"
           type="text"
           id="surname"
           name="surname"
         />
       </div>
-      <label for="message">Message*</label>
+      <label data-cy-label="message" for="message">Message*</label>
       <textarea
+        data-cy-input="message"
         class="add-comment-input"
         type="text"
         id="message"

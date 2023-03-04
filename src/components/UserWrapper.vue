@@ -8,17 +8,18 @@ const props = defineProps({
 <template>
   <div class="user-wrapper">
     <img
+      data-cy-poster-image
       alt="User image"
       :src="props.postData.owner.picture"
       class="user-image"
     />
 
     <div class="title-wrapper">
-      <h2>
+      <h2 data-cy-poster-name>
         <span> {{ props.postData.owner.firstName }} {{ "" }} </span>
         <span>{{ props.postData.owner.lastName }}</span>
       </h2>
-      <i>{{ formatDate(props.postData.publishDate) }}</i>
+      <i data-cy-post-date>{{ formatDate(props.postData.publishDate) }}</i>
     </div>
   </div>
 </template>

@@ -11,6 +11,7 @@ const { id } = route.params;
   <header>
     <div class="inner-wrapper">
       <RouterLink
+        data-cy-button="edit"
         v-if="props.button === 'edit'"
         :to="{ path: `/${id}/edit` }"
         class="edit-button"
@@ -38,9 +39,12 @@ const { id } = route.params;
           height="57"
         />
       </button>
-      <RouterLink v-if="props.button === 'create'" to="/create">
+      <RouterLink
+        data-cy-button="create"
+        v-if="props.button === 'create'"
+        to="/create"
+      >
         <img
-          data-cy-button="create"
           alt="Plus icon"
           src="@/assets/plus-icon.svg"
           width="57"

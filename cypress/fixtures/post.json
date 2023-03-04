@@ -1,0 +1,16 @@
+{
+  "id": "60d21b1767d0d8992e610bfb",
+  "image": "https://img.dummyapi.io/photo-1569095380079-90096b58b1d0.jpg",
+  "likes": 7,
+  "link": "https://www.facebook.com/lauradw97-110422000338298/",
+  "tags": ["dog", "animal", "airedale"],
+  "text": "brown dog sitting on road",
+  "publishDate": "2020-02-24T03:58:47.815Z",
+  "owner": {
+    "id": "60d0fe4f5311236168a10a1a",
+    "title": "mr",
+    "firstName": "Vaino",
+    "lastName": "Sakala",
+    "picture": "https://randomuser.me/api/portraits/med/men/56.jpg"
+  }
+}
